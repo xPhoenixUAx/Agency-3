@@ -1,7 +1,11 @@
-Options -Indexes
+Options -Indexes -MultiViews
+DirectoryIndex index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,END]
+  RewriteRule ^(?:router\.php|DEPLOY\.md|api/site\.php)$ - [F,END]
   RewriteRule ^audit\.html$ index.html#audit [R=301,L,NE]
+  RewriteRule ^(?:|(?:index|google-ads|tracking|results|privacy|terms|cookie-policy)\.html|robots\.txt|sitemap\.xml)$ api/page.php [END]
 </IfModule>
 <FilesMatch "^(server(?:\.example)?\.php|\.env.*)$">
   Require all denied

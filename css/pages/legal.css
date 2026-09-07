@@ -1,0 +1,61 @@
+/* Shared by Privacy and Terms only; Cookie Policy keeps its existing layout. */
+:is(.page-privacy, .page-terms) .legal-summary {
+  margin: 28px 0;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+:is(.page-privacy, .page-terms) .legal-summary p:last-child {
+  margin-bottom: 0;
+}
+
+:is(.page-privacy, .page-terms) .legal-toc {
+  padding: 20px 28px;
+}
+
+:is(.page-privacy, .page-terms) .legal-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 36px;
+  margin: 0;
+  padding-left: 24px;
+  font-size: 16px;
+}
+
+:is(.page-privacy, .page-terms) .legal-toc li {
+  padding: 4px 0;
+}
+
+:is(.page-privacy, .page-terms) .legal-copy > section {
+  padding-top: 44px;
+}
+
+:is(.page-privacy, .page-terms) .legal-copy > section > ul {
+  padding-left: 24px;
+}
+
+:is(.page-privacy, .page-terms) .legal-copy > section > ul li {
+  margin-block: 12px;
+  padding-left: 4px;
+}
+
+:is(.page-privacy, .page-terms) .legal-copy a,
+:is(.page-privacy, .page-terms) .legal-copy [data-brand] {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+  :is(.page-privacy, .page-terms) .legal-summary,
+  :is(.page-privacy, .page-terms) .legal-toc {
+    padding: 20px;
+  }
+
+  :is(.page-privacy, .page-terms) .legal-toc ol {
+    grid-template-columns: 1fr;
+  }
+
+  :is(.page-privacy, .page-terms) .legal-copy > section {
+    padding-top: 32px;
+  }
+}

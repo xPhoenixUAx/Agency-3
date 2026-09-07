@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('./cookie-notice.css');
 :root {
   --primary: #733cde;
   --accent: #ff773d;

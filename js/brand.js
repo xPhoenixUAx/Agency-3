@@ -2,6 +2,7 @@
 const configURL = new URL('../config/site.json', import.meta.url);
 const formURL = new URL('../config/form.json', import.meta.url);
 const siteURL = new URL('../', import.meta.url);
+const pages = ['index', 'google-ads', 'tracking', 'results', 'privacy', 'terms', 'cookie-policy'];
 
 function assetURL(value) {
   if (!value) return null;
@@ -19,7 +20,14 @@ export function validateConfig(brand) {
       throw new Error(`Missing ${key} in site.json.`);
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(brand.email)) throw new Error('Invalid contact email.');
-  if (!['https:', 'http:'].includes(new URL(brand.website).protocol))
+  const website = new URL(brand.website);
+  if (
+    !['https:', 'http:'].includes(website.protocol) ||
+    website.username ||
+    website.password ||
+    website.search ||
+    website.hash
+  )
     throw new Error('Invalid website URL.');
   for (const key of ['logo', 'logoLight', 'favicon']) {
     if (brand[key] !== undefined && typeof brand[key] !== 'string')
@@ -28,12 +36,13 @@ export function validateConfig(brand) {
   }
   if (brand.logoShowName !== undefined && typeof brand.logoShowName !== 'boolean')
     throw new Error('Invalid logoShowName in site.json.');
+  if (brand.indexable !== undefined && typeof brand.indexable !== 'boolean')
+    throw new Error('Invalid indexable in site.json.');
   if (
-    brand.titles !== undefined &&
-    (!brand.titles ||
-      typeof brand.titles !== 'object' ||
-      Array.isArray(brand.titles) ||
-      Object.values(brand.titles).some((title) => typeof title !== 'string' || !title.trim()))
+    !brand.titles ||
+    typeof brand.titles !== 'object' ||
+    Array.isArray(brand.titles) ||
+    pages.some((page) => typeof brand.titles[page] !== 'string' || !brand.titles[page].trim())
   )
     throw new Error('Invalid titles in site.json.');
   return brand;
@@ -94,9 +103,8 @@ export function applyBrand(brand) {
   });
 
   const page = location.pathname.split('/').pop() || 'index.html';
-  const title =
-    brand.titles?.[page.replace(/\.html$/, '')] || document.documentElement.dataset.pageTitle;
-  if (title) document.title = `${title} | ${brand.name}`;
+  const title = brand.titles[page.replace(/\.html$/, '')];
+  document.title = `${title} | ${brand.name}`;
   document.querySelector('meta[property="og:site_name"]')?.setAttribute('content', brand.name);
   document
     .querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]')
@@ -104,6 +112,16 @@ export function applyBrand(brand) {
   const canonical = new URL(page, `${brand.website.replace(/\/+$/, '')}/`).href;
   document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
   document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
+  document
+    .querySelector('meta[name="robots"]')
+    ?.setAttribute('content', brand.indexable ? 'index, follow' : 'noindex, nofollow');
+  if (page === 'index.html') {
+    document
+      .querySelectorAll(
+        'meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]',
+      )
+      .forEach((el) => el.setAttribute('content', brand.description));
+  }
 
   const faviconURL = assetURL(brand.favicon);
   if (faviconURL) {
@@ -116,6 +134,8 @@ export function applyBrand(brand) {
     icon.href = faviconURL;
     // Let the browser detect SVG, PNG or ICO instead of retaining the old SVG type.
     icon.removeAttribute('type');
+  } else {
+    document.querySelectorAll('link[rel="icon"]').forEach((icon) => icon.remove());
   }
 }
 

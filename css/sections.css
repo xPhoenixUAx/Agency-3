@@ -904,6 +904,30 @@
 .case-card summary {
   font-size: 15px;
 }
+#case-detail {
+  text-align: center;
+}
+#case-detail .section-heading {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 20px;
+}
+#case-detail .section-heading > p {
+  max-width: 560px;
+  margin: 0;
+}
+#case-detail .feature-card {
+  padding-inline: 24px;
+}
+#case-detail .feature-card p {
+  max-width: 40ch;
+  margin-inline: auto;
+}
+@media (max-width: 767px) {
+  #case-detail .feature-card {
+    padding-inline: 0;
+  }
+}
 .case-detail-grid {
   gap: 45px;
 }
@@ -914,7 +938,7 @@
 .case-detail-grid .feature-card .icon-disc {
   width: 60px;
   height: 60px;
-  margin: 0 0 18px;
+  margin: 0 auto 18px;
   background: var(--accent);
   color: var(--accent-text);
 }

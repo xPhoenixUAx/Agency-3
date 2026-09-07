@@ -1,6 +1,7 @@
 import { configReady } from './brand.js';
 import { motion } from './motion.js';
 import './accordions.js';
+import './cookie-notice.js';
 const dialog = document.querySelector('#site-menu'),
   opener = document.querySelector('[data-menu-open]');
 let previousOverflow = '';

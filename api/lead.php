@@ -14,7 +14,7 @@ if (!in_array($_SERVER['REQUEST_METHOD'] ?? '', ['GET', 'POST'], true)) {
     header('Allow: GET, POST');
     reply(405, ['ok' => false, 'message' => 'Method not allowed.']);
 }
-session_name('pivot_form');
+session_name('agency_form');
 session_set_cookie_params([
     'httponly' => true,
     'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
@@ -42,7 +42,7 @@ if (
     reply(403, ['ok' => false, 'message' => 'Your session expired. Please try again.']);
 }
 // No proxy headers are trusted. Configure your host to pass the real client address.
-$bucketDir = sys_get_temp_dir() . '/pivot-agency-rate-' . substr(hash('sha256', __DIR__), 0, 12);
+$bucketDir = sys_get_temp_dir() . '/agency-rate-' . substr(hash('sha256', __DIR__), 0, 12);
 if (!is_dir($bucketDir) && !@mkdir($bucketDir, 0700, true) && !is_dir($bucketDir)) {
     reply(503, ['ok' => false, 'message' => 'Please try again later.']);
 }

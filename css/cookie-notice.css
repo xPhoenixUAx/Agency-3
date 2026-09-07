@@ -1,0 +1,132 @@
+.cookie-notice {
+  position: fixed;
+  z-index: 90;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  width: min(460px, calc(100% - 48px));
+  max-height: calc(100dvh - 104px);
+  overflow-y: auto;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--primary);
+  border-radius: 22px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 14px 60px rgb(45 23 70 / 18%);
+}
+
+.cookie-notice-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cookie-notice-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 52px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.cookie-notice-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.cookie-notice .cookie-notice-label {
+  margin: 0 0 4px;
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.cookie-notice h2 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.15;
+}
+
+.cookie-notice-copy {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.cookie-notice-memory {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.cookie-notice-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cookie-notice-policy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cookie-notice-actions .button {
+  min-width: 132px;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.footer .cookie-notice-reopen {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer .cookie-notice-reopen:hover {
+  color: var(--accent);
+}
+
+html {
+  scroll-padding-bottom: var(--cookie-notice-space, 0px);
+}
+
+@media (max-width: 767px) {
+  .cookie-notice {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: calc(100% - 24px);
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .cookie-notice-heading {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .cookie-notice h2 {
+    font-size: 22px;
+  }
+
+  .cookie-notice-actions .button {
+    min-width: 120px;
+    padding-inline: 20px;
+  }
+}

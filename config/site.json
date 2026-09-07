@@ -9,6 +9,7 @@
   "logoLight": "assets/agency-mark-light.svg",
   "logoShowName": true,
   "favicon": "assets/favicon.svg",
+  "indexable": false,
   "titles": {
     "index": "Google Ads Agency",
     "google-ads": "Google Ads Management",
