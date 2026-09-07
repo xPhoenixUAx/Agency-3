@@ -3,10 +3,12 @@
     "name": "PIVOT",
     "legalName": "Your registered company name",
     "description": "Independent Google Ads performance agency",
-    "logo": "",
+    "logo": "assets/agency-mark.svg",
     "email": "hello@example.com",
     "address": "Your business address",
-    "website": "https://example.com"
+    "website": "https://example.com",
+    "logoDark": "assets/agency-mark-light.svg",
+    "logoMode": "symbol"
   },
   "colors": {
     "primary": "#733CDE",
@@ -34,7 +36,8 @@
   "links": {
     "audit": "index.html#audit",
     "privacy": "privacy.html",
-    "terms": "terms.html"
+    "terms": "terms.html",
+    "cookies": "cookie-policy.html"
   },
   "form": {
     "businessTypes": [
@@ -88,6 +91,10 @@
       "terms": {
         "title": "Terms",
         "description": "Website terms and information about the free Google Ads audit."
+      },
+      "cookie-policy": {
+        "title": "Cookie Policy",
+        "description": "How we use cookies, what they store, how long they remain and how you can manage your choices."
       }
     }
   }

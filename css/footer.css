@@ -76,6 +76,11 @@
   line-height: 1.6;
 }
 
+.footer .brand img {
+  height: 44px;
+  max-width: 220px;
+}
+
 .footer-thought {
   color: #c7b8d6;
 }

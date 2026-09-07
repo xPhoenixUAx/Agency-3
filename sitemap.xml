@@ -12,4 +12,7 @@
   <url>
     <loc>https://example.com/results.html</loc>
   </url>
+  <url>
+    <loc>https://example.com/cookie-policy.html</loc>
+  </url>
 </urlset>

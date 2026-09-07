@@ -44,16 +44,6 @@ h2 {
   font-weight: 600;
   min-height: 52px;
 }
-.site-header .brand-caption {
-  font-size: 9px;
-  letter-spacing: 0.08em;
-}
-.site-header .brand-caption:before {
-  content: '●';
-  color: var(--primary);
-  font-size: 12px;
-  margin-right: 16px;
-}
 .browser-card {
   border-radius: 12px;
   box-shadow: 0 16px 22px rgb(45 23 70 / 0.14);

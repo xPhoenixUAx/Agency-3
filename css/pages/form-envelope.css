@@ -79,6 +79,16 @@
   font-size: 22px;
 }
 
+.envelope-letter [data-logo] img {
+  width: 128px;
+  height: auto;
+  max-width: 100%;
+}
+.envelope-letter .brand-lockup img {
+  width: 28px;
+  height: 28px;
+}
+
 .envelope-message {
   position: absolute;
   inset: 0;

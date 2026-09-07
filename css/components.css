@@ -109,12 +109,23 @@ button {
   overflow-wrap: anywhere;
 }
 .brand [data-logo] {
+  display: block;
   min-width: 0;
 }
-.brand-caption {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  margin-right: auto;
+.brand [data-logo].brand-lockup,
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+}
+.brand-lockup img {
+  flex-shrink: 0;
+}
+.brand-wordmark {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  letter-spacing: -0.05em;
 }
 .desktop-nav {
   display: flex;
@@ -139,6 +150,25 @@ button {
 }
 .services-menu {
   position: relative;
+}
+.services-menu > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.services-chevron {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  transition: transform 180ms ease;
+}
+[data-services][aria-expanded='true'] .services-chevron {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .services-chevron {
+    transition: none;
+  }
 }
 #services-links {
   position: absolute;
@@ -704,9 +734,6 @@ dialog .button {
   height: 1px;
 }
 @media (min-width: 1200px) {
-  .brand-caption {
-    max-width: 140px;
-  }
   .site-header .brand {
     max-width: 240px;
   }
@@ -726,9 +753,6 @@ dialog .button {
   }
   .menu-toggle {
     display: block;
-  }
-  .brand-caption {
-    margin-right: auto;
   }
   .header-actions {
     margin-left: auto;
@@ -800,7 +824,10 @@ dialog .button {
     font-size: 25px;
     max-width: calc(100vw - 110px);
   }
-  .brand-caption,
+  .site-header .brand img {
+    height: 32px;
+    max-width: 160px;
+  }
   .header-cta {
     display: none;
   }
@@ -961,9 +988,6 @@ html[data-long-brand='true'] .site-header .brand {
   letter-spacing: -0.025em;
   max-width: 240px;
   line-height: 1.15;
-}
-html[data-long-brand='true'] .brand-caption {
-  display: none;
 }
 @media (max-width: 767px) {
   html[data-long-brand='true'] .site-header .brand {

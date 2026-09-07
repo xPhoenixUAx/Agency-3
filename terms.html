@@ -47,12 +47,29 @@
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container">
-        <a class="brand" href="index.html" aria-label="PIVOT home"><span data-logo>PIVOT</span></a
-        ><span class="brand-caption">GOOGLE ADS AGENCY</span>
+        <a class="brand" href="index.html" aria-label="PIVOT home"
+          ><span data-logo class="brand-lockup"
+            ><img
+              src="assets/agency-mark.svg"
+              width="48"
+              height="48"
+              alt=""
+              aria-hidden="true"
+            /><span class="brand-wordmark">PIVOT</span></span
+          ></a
+        >
         <nav class="desktop-nav" aria-label="Main navigation">
           <div class="services-menu">
             <button data-services aria-expanded="false" aria-controls="services-links">
-              Services <span aria-hidden="true">⌄</span>
+              Services
+              <svg
+                class="services-chevron"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="assets/icons.svg#chevron-down"></use>
+              </svg>
             </button>
             <div id="services-links" hidden>
               <a href="google-ads.html">Google Ads management</a
@@ -171,7 +188,15 @@
         <div class="footer-grid">
           <div class="footer-identity">
             <a class="brand" href="index.html" aria-label="PIVOT home"
-              ><span data-logo>PIVOT</span></a
+              ><span data-logo data-logo-variant="light" class="brand-lockup"
+                ><img
+                  src="assets/agency-mark-light.svg"
+                  width="48"
+                  height="48"
+                  alt=""
+                  aria-hidden="true"
+                /><span class="brand-wordmark">PIVOT</span></span
+              ></a
             >
             <p class="footer-description" data-brand="description">
               Independent Google Ads performance agency
@@ -215,6 +240,7 @@
           <nav aria-label="Legal">
             <a data-link="privacy" href="privacy.html">Privacy notice</a
             ><a data-link="terms" href="terms.html">Terms of use</a>
+            <a data-link="cookies" href="cookie-policy.html">Cookie Policy</a>
           </nav>
           <a class="footer-back" href="#main">Back to top <span aria-hidden="true">&uarr;</span></a>
         </div>

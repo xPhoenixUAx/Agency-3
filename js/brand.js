@@ -97,14 +97,19 @@ export function applyBrand(c) {
   });
   document.querySelectorAll('[data-logo]').forEach((el) => {
     el.closest('a')?.setAttribute('aria-label', `${c.brand.name} home`);
-    const url = c.brand.logo && safeLink(c.brand.logo);
+    const symbol = c.brand.logoMode === 'symbol';
+    el.classList.toggle('brand-lockup', symbol);
+    const source =
+      el.dataset.logoVariant === 'light' ? c.brand.logoDark || c.brand.logo : c.brand.logo;
+    const url = c.brand.logo && safeLink(source);
     if (!url) {
       el.textContent = c.brand.name;
     }
     if (url) {
       const img = document.createElement('img');
       img.src = url;
-      img.alt = c.brand.name;
+      img.alt = symbol ? '' : c.brand.name;
+      if (symbol) img.setAttribute('aria-hidden', 'true');
       img.addEventListener(
         'error',
         () => {
@@ -112,7 +117,14 @@ export function applyBrand(c) {
         },
         { once: true },
       );
-      el.replaceChildren(img);
+      if (symbol) {
+        const wordmark = document.createElement('span');
+        wordmark.className = 'brand-wordmark';
+        wordmark.textContent = c.brand.name;
+        el.replaceChildren(img, wordmark);
+      } else {
+        el.replaceChildren(img);
+      }
     }
   });
   document.querySelectorAll('select[data-options]').forEach((el) => {
