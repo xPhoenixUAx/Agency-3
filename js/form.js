@@ -9,9 +9,9 @@ if (form) {
   const confirmation = createFormEnvelope(form);
   const submit = form.querySelector('[type=submit]');
   const submitLabel = submit.querySelector('[data-content="submit"]');
+  const originalSubmitLabel = submitLabel.textContent;
   let csrf = '';
   let sending = false;
-  let cfg;
   let sessionRequest;
 
   function token() {
@@ -34,9 +34,6 @@ if (form) {
   // Server availability does not prevent the visitor from completing the form.
   void token().catch(() => {});
   configReady
-    .then((config) => {
-      cfg = config;
-    })
     .catch(() => {})
     .finally(() => {
       submit.disabled = false;
@@ -73,7 +70,7 @@ if (form) {
       form.dataset.delivery = confirmed ? 'confirmed' : 'unconfirmed';
       await presentation;
       form.reset();
-      submitLabel.textContent = cfg?.content.submit || 'Request my free audit';
+      submitLabel.textContent = originalSubmitLabel;
       form.removeAttribute('aria-busy');
       submit.disabled = false;
       sending = false;

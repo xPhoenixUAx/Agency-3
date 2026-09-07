@@ -1,0 +1,21 @@
+{
+  "businessTypes": [
+    "Lead Generation",
+    "E-commerce",
+    "Local Business",
+    "B2B / SaaS",
+    "Mobile App",
+    "Other"
+  ],
+  "budgets": ["Not sure yet", "Under $1,000", "$1,000–$5,000", "$5,000–$20,000", "$20,000+"],
+  "needs": [
+    "Google Ads Management",
+    "Performance Max",
+    "Shopping",
+    "Lead Generation",
+    "Tracking & Analytics",
+    "Marketing Automation",
+    "Account Audit",
+    "Other"
+  ]
+}

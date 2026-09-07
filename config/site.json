@@ -1,101 +1,21 @@
 {
-  "brand": {
-    "name": "PIVOT",
-    "legalName": "Your registered company name",
-    "description": "Independent Google Ads performance agency",
-    "logo": "assets/agency-mark.svg",
-    "email": "hello@example.com",
-    "address": "Your business address",
-    "website": "https://example.com",
-    "logoDark": "assets/agency-mark-light.svg",
-    "logoMode": "symbol"
-  },
-  "colors": {
-    "primary": "#733CDE",
-    "accent": "#FF773D",
-    "ink": "#2D1746",
-    "muted": "#62536F",
-    "surface": "#EEE9FC",
-    "paper": "#FFFFFF",
-    "border": "#D8CEE8",
-    "success": "#147D50"
-  },
-  "content": {
-    "heroTitle": "Be the brand",
-    "heroDescription": "Strategy, creative and conversion-focused campaigns for lead generation, ecommerce and measurable revenue growth.",
-    "cta": "Get a free audit",
-    "submit": "Request my free audit",
-    "success": "Thank you! We have received your request. Our team will review your information and get back to you shortly.",
-    "footer": "Good campaigns start with better questions.",
-    "heroTitleEnd": "they find first.",
-    "heroSupporting": "Google Ads that turn intent into opportunity.",
-    "footerTitle": "Clear direction.",
-    "footerTitleEnd": "Brighter possibilities.",
-    "successTitle": "Your request is sent."
-  },
-  "links": {
-    "audit": "index.html#audit",
-    "privacy": "privacy.html",
-    "terms": "terms.html",
-    "cookies": "cookie-policy.html"
-  },
-  "form": {
-    "businessTypes": [
-      "Lead Generation",
-      "E-commerce",
-      "Local Business",
-      "B2B / SaaS",
-      "Mobile App",
-      "Other"
-    ],
-    "budgets": ["Not sure yet", "Under $1,000", "$1,000–$5,000", "$5,000–$20,000", "$20,000+"],
-    "needs": [
-      "Google Ads Management",
-      "Performance Max",
-      "Shopping",
-      "Lead Generation",
-      "Tracking & Analytics",
-      "Marketing Automation",
-      "Account Audit",
-      "Other"
-    ]
-  },
-  "features": {
-    "showIllustrativeCases": true,
-    "animations": true
-  },
-  "seo": {
-    "indexable": false,
-    "legalApproved": false,
-    "pages": {
-      "index": {
-        "title": "Google Ads Agency",
-        "description": "Independent Google Ads performance agency"
-      },
-      "google-ads": {
-        "title": "Google Ads Management",
-        "description": "Search, Performance Max, Shopping, video and app campaigns shaped around your business goals."
-      },
-      "tracking": {
-        "title": "Tracking & Automation",
-        "description": "Connect website events, qualified CRM outcomes and revenue to clearer campaign decisions."
-      },
-      "results": {
-        "title": "Results & Approaches",
-        "description": "Explore illustrative Google Ads approaches for ecommerce, lead generation, B2B and apps."
-      },
-      "privacy": {
-        "title": "Privacy",
-        "description": "Information about website enquiries and the operator’s privacy practices."
-      },
-      "terms": {
-        "title": "Terms",
-        "description": "Website terms and information about the free Google Ads audit."
-      },
-      "cookie-policy": {
-        "title": "Cookie Policy",
-        "description": "How we use cookies, what they store, how long they remain and how you can manage your choices."
-      }
-    }
+  "name": "PIVOT",
+  "legalName": "Your registered company name",
+  "email": "hello@example.com",
+  "address": "Your business address",
+  "website": "https://example.com",
+  "description": "Independent Google Ads performance agency",
+  "logo": "assets/agency-mark.svg",
+  "logoLight": "assets/agency-mark-light.svg",
+  "logoShowName": true,
+  "favicon": "assets/favicon.svg",
+  "titles": {
+    "index": "Google Ads Agency",
+    "google-ads": "Google Ads Management",
+    "tracking": "Tracking & Automation",
+    "results": "Results & Approaches",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookie-policy": "Cookie Policy"
   }
 }

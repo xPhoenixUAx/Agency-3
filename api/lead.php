@@ -81,8 +81,21 @@ if (!empty($_POST['company_url'])) {
     reply(422, ['ok' => false, 'message' => 'Unable to process this request.']);
 }
 $config = json_decode((string) @file_get_contents(__DIR__ . '/../config/site.json'), true);
-if (!is_array($config)) {
+$formOptions = json_decode((string) @file_get_contents(__DIR__ . '/../config/form.json'), true);
+if (
+    !is_array($config) ||
+    !is_string($config['name'] ?? null) ||
+    trim($config['name']) === '' ||
+    strlen($config['name']) > 200 ||
+    preg_match('/[\r\n\x00]/', $config['name']) ||
+    !is_array($formOptions)
+) {
     reply(503, ['ok' => false, 'message' => 'The form is temporarily unavailable.']);
+}
+foreach (['businessTypes', 'budgets', 'needs'] as $list) {
+    if (!isset($formOptions[$list]) || !is_array($formOptions[$list]) || !$formOptions[$list]) {
+        reply(503, ['ok' => false, 'message' => 'The form is temporarily unavailable.']);
+    }
 }
 $limits = [
     'name' => 120,
@@ -137,7 +150,7 @@ foreach (
     ['business_type' => 'businessTypes', 'budget' => 'budgets', 'need' => 'needs']
     as $key => $list
 ) {
-    if ($data[$key] !== '' && !in_array($data[$key], $config['form'][$list] ?? [], true)) {
+    if ($data[$key] !== '' && !in_array($data[$key], $formOptions[$list], true)) {
         $errors[$key] = 'Choose an available option.';
     }
 }
@@ -155,7 +168,7 @@ $serverFile = is_file(__DIR__ . '/server.php')
     ? __DIR__ . '/server.php'
     : __DIR__ . '/server.example.php';
 $server = require $serverFile;
-$to = $server['recipient'] ?? '' ?: $config['brand']['email'] ?? '';
+$to = $config['email'] ?? '';
 $from = $server['from'] ?? '';
 foreach ([$to, $from] as $mailbox) {
     if (
@@ -170,8 +183,9 @@ foreach ([$to, $from] as $mailbox) {
         ]);
     }
 }
-$subject = 'Website audit request';
-$body = "New audit request\n\n";
+$subjectText = $config['name'] . ' - Website audit request';
+$subject = '=?UTF-8?B?' . base64_encode($subjectText) . '?=';
+$body = 'New audit request for ' . $config['name'] . "\n\n";
 foreach ($data as $key => $value) {
     $body .= strtoupper(str_replace('_', ' ', $key)) . ":\n" . $value . "\n\n";
 }
@@ -183,9 +197,16 @@ $headers = [
 ];
 $outbox = getenv('AGENCY_TEST_OUTBOX');
 if (getenv('AGENCY_ENV') === 'test' && is_string($outbox) && is_dir($outbox)) {
+    $preview = 'To: ' . $to . "\nSubject: " . $subject . "\n";
+    foreach ($headers as $key => $value) {
+        $preview .= $key . ': ' . $value . "\n";
+    }
     $sent =
-        file_put_contents($outbox . '/' . bin2hex(random_bytes(12)) . '.txt', $body, LOCK_EX) !==
-        false;
+        file_put_contents(
+            $outbox . '/' . bin2hex(random_bytes(12)) . '.txt',
+            $preview . "\n" . $body,
+            LOCK_EX
+        ) !== false;
 } else {
     $sent = function_exists('mail') && @mail($to, $subject, $body, $headers);
 }
