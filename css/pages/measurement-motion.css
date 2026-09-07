@@ -1,0 +1,113 @@
+/* One signal passes through four stages; the copy never moves or disappears. */
+#measurement-flow {
+  --flow-play-state: paused;
+  --flow-travel-x: 6px;
+  --flow-travel-y: 0px;
+}
+
+#measurement-flow[data-running='true'] {
+  --flow-play-state: running;
+}
+
+#measurement-flow > li:nth-child(1) {
+  --flow-phase: 0s;
+}
+#measurement-flow > li:nth-child(2) {
+  --flow-phase: -9s;
+}
+#measurement-flow > li:nth-child(3) {
+  --flow-phase: -6s;
+}
+#measurement-flow > li:nth-child(4) {
+  --flow-phase: -3s;
+}
+
+#measurement-flow[data-flow-motion] .icon-disc {
+  position: relative;
+  animation: flow-stage-focus 12s ease-in-out var(--flow-phase) infinite both;
+  animation-play-state: var(--flow-play-state);
+}
+
+#measurement-flow[data-flow-motion] .icon-disc::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: flow-stage-ring 12s ease-out var(--flow-phase) infinite both;
+  animation-play-state: var(--flow-play-state);
+}
+
+#measurement-flow[data-flow-motion] > li:not(:last-child)::after {
+  animation: flow-signal-pass 12s ease-in-out var(--flow-phase) infinite both;
+  animation-play-state: var(--flow-play-state);
+}
+
+@keyframes flow-stage-focus {
+  0%,
+  24%,
+  100% {
+    transform: scale(1);
+    box-shadow: inset 0 0 15px #fff9;
+  }
+  5%,
+  15% {
+    transform: scale(1.08);
+    box-shadow:
+      inset 0 0 15px #fff9,
+      0 0 0 3px var(--accent),
+      0 0 28px color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+}
+
+@keyframes flow-stage-ring {
+  0%,
+  3% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  6% {
+    opacity: 0.8;
+  }
+  22%,
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+@keyframes flow-signal-pass {
+  0%,
+  10%,
+  27%,
+  100% {
+    opacity: 0.45;
+    transform: translate(0, 0);
+  }
+  17% {
+    opacity: 1;
+    transform: translate(var(--flow-travel-x), var(--flow-travel-y));
+  }
+  23% {
+    opacity: 0.8;
+    transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  #measurement-flow {
+    --flow-travel-x: 0px;
+    --flow-travel-y: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #measurement-flow[data-flow-motion] *,
+  #measurement-flow[data-flow-motion] *::after {
+    animation: none;
+  }
+  #measurement-flow[data-flow-motion] .icon-disc::after {
+    display: none;
+  }
+}

@@ -1,0 +1,224 @@
+/* A readable swipe rail below desktop. The approved desktop cascade is unchanged. */
+.campaign-navigation {
+  display: none;
+}
+
+@media (max-width: 1199px) {
+  .page-index .campaign-scene {
+    margin-top: 28px;
+    padding: 0;
+  }
+
+  .page-index .scene-decor {
+    inset: 30px calc(-1 * var(--gutter)) -30px;
+    opacity: 0.65;
+  }
+
+  .page-index .scene-decor img {
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  .campaign-navigation:not([hidden]) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    z-index: 1;
+  }
+
+  .campaign-navigation button {
+    min-height: 44px;
+    padding: 10px 22px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font:
+      600 14px/1.2 Arial,
+      sans-serif;
+    cursor: pointer;
+  }
+
+  .campaign-navigation button:hover {
+    background: #ffffff80;
+  }
+
+  .campaign-navigation button[aria-current='true'] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .page-index .campaign-cascade {
+    --rail-gutter: var(--gutter);
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(320px, calc((100% - 18px) / 2 - 18px), 430px);
+    align-items: stretch;
+    gap: 18px;
+    margin-inline: calc(-1 * var(--rail-gutter));
+    padding: 22px var(--rail-gutter) 30px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--rail-gutter);
+    scrollbar-width: none;
+  }
+
+  .page-index .campaign-cascade::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page-index .campaign-slot:nth-child(n) {
+    padding: 0;
+    transform: none;
+    scroll-snap-align: start;
+    --float-x: 0px;
+    --float-y: -4px;
+    --float-angle: 0deg;
+  }
+
+  .page-index .campaign-slot > .browser-card {
+    height: 100%;
+    box-shadow: 0 12px 22px rgb(45 23 70 / 0.12);
+  }
+
+  .page-index .campaign-cascade .browser-bar {
+    height: 28px;
+  }
+
+  .page-index .campaign-slot:nth-child(n) .browser-body {
+    display: block;
+    min-height: 360px;
+    padding: 18px;
+  }
+
+  .page-index .campaign-cascade .mobile-card-label {
+    display: none;
+  }
+
+  .page-index .campaign-cascade .search-result {
+    min-height: 110px;
+  }
+
+  .page-index .campaign-cascade .search-result h3 {
+    min-height: 0;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .page-index .campaign-cascade .search-result p {
+    font-size: 13px;
+  }
+
+  .page-index .campaign-cascade .search-result .shoe {
+    height: 90px;
+  }
+
+  .page-index .campaign-cascade .search-query {
+    min-height: 38px;
+    font-size: 13px;
+  }
+
+  .page-index .campaign-cascade .search-sitelinks {
+    font-size: 11px;
+  }
+
+  .page-index .campaign-cascade .shopping-card .ad-content > .shoe,
+  .page-index .campaign-cascade .poster-frame .poster {
+    height: 174px;
+  }
+
+  .page-index .campaign-cascade .shopping-card .ad-content h3 {
+    min-height: 2.4em;
+    margin-bottom: 4px;
+  }
+
+  .page-index .campaign-cascade .product-caption {
+    min-height: 0;
+    font-size: 12px !important;
+  }
+
+  .page-index .campaign-cascade .story-video-slogan {
+    left: 14px;
+    bottom: 16px;
+    max-width: 76%;
+    font-size: 24px;
+  }
+
+  .page-index .campaign-cascade .story-video-badge {
+    top: 10px;
+    left: 12px;
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+
+  .page-index .campaign-cascade .enquiry-card .ad-content {
+    padding-top: 40px;
+  }
+
+  .page-index .campaign-cascade .enquiry-card .ad-content p {
+    font-size: 14px;
+  }
+
+  .page-index .campaign-meta {
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 767px) {
+  .page-index .campaign-scene {
+    margin-top: 24px;
+  }
+
+  .campaign-navigation:not([hidden]) {
+    gap: 4px;
+    justify-content: space-between;
+  }
+
+  .campaign-navigation button {
+    flex: 1;
+    padding-inline: 8px;
+    font-size: 13px;
+  }
+
+  .page-index .campaign-cascade {
+    grid-auto-columns: min(360px, calc(100% - 18px));
+    gap: 12px;
+    padding-top: 18px;
+    padding-bottom: 24px;
+  }
+
+  .page-index .campaign-slot:nth-child(n) .browser-body {
+    min-height: 358px;
+    padding: 16px;
+  }
+
+  .page-index .campaign-cascade .shopping-card .ad-content > .shoe,
+  .page-index .campaign-cascade .poster-frame .poster {
+    height: 164px;
+  }
+
+  .page-index .campaign-cascade .story-video-slogan {
+    font-size: 23px;
+  }
+
+  .page-index .campaign-cascade .channel-byline small {
+    display: none;
+  }
+
+  .page-index .campaign-meta {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .page-index .campaign-meta .illustration-note {
+    flex: 1;
+    min-width: 155px;
+    padding-top: 6px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+}

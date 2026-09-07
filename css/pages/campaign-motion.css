@@ -1,0 +1,386 @@
+/* The HTML is static until config and motion preferences allow these loops. */
+.campaign-scene {
+  --campaign-play-state: paused;
+}
+
+.campaign-scene[data-campaign-running='true'] {
+  --campaign-play-state: running;
+}
+
+.campaign-scene[data-campaign-motion] .campaign-slot {
+  translate: var(--pointer-x, 0px) var(--pointer-y, 0px);
+  rotate: var(--pointer-angle, 0deg);
+  transition:
+    translate 420ms ease-out,
+    rotate 420ms ease-out;
+}
+
+.campaign-slot:nth-child(1) {
+  --float-x: -3px;
+  --float-y: -8px;
+  --float-angle: -0.5deg;
+  --float-duration: 6.8s;
+  --float-phase: -1.2s;
+}
+
+.campaign-slot:nth-child(2) {
+  --float-x: 2px;
+  --float-y: -10px;
+  --float-angle: 0.45deg;
+  --float-duration: 7.6s;
+  --float-phase: -4.1s;
+}
+
+.campaign-slot:nth-child(3) {
+  --float-x: -2px;
+  --float-y: -7px;
+  --float-angle: -0.4deg;
+  --float-duration: 8s;
+  --float-phase: -2.8s;
+}
+
+.campaign-slot:nth-child(4) {
+  --float-x: 3px;
+  --float-y: -9px;
+  --float-angle: 0.5deg;
+  --float-duration: 6.2s;
+  --float-phase: -4.8s;
+}
+
+.campaign-scene[data-campaign-motion] .campaign-slot > .browser-card {
+  animation: campaign-float var(--float-duration) ease-in-out var(--float-phase) infinite both;
+  animation-play-state: var(--campaign-play-state);
+}
+
+.campaign-scene[data-campaign-motion] .search-query {
+  position: relative;
+  overflow: hidden;
+}
+
+.campaign-scene[data-campaign-motion] .search-query::after {
+  content: '';
+  position: absolute;
+  inset-block: -20%;
+  left: 0;
+  width: 40%;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    color-mix(in srgb, var(--primary) 16%, transparent),
+    #fff9,
+    transparent
+  );
+  animation: campaign-search-light 7.2s ease-in-out -2.2s infinite both;
+  animation-play-state: var(--campaign-play-state);
+}
+
+.campaign-scene[data-campaign-motion] .shopping-card .ad-content > .shoe {
+  transform-origin: 50% 60%;
+  animation: campaign-product 8.2s ease-in-out -1.4s infinite both;
+  animation-play-state: var(--campaign-play-state);
+}
+
+.campaign-scene[data-campaign-motion] .poster-frame {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.campaign-scene[data-campaign-motion] .poster-frame .poster {
+  animation: campaign-poster 9s ease-in-out -3.2s infinite both;
+  animation-play-state: var(--campaign-play-state);
+}
+
+.campaign-scene[data-campaign-motion] .play-symbol::before,
+.campaign-scene[data-campaign-motion] .enquiry-icon::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: campaign-halo 4.8s ease-out -0.8s infinite both;
+  animation-play-state: var(--campaign-play-state);
+}
+
+.campaign-scene[data-campaign-motion] .enquiry-icon {
+  position: relative;
+}
+
+.campaign-scene[data-campaign-motion] .enquiry-icon::before {
+  border-color: var(--primary);
+  animation-duration: 5.6s;
+  animation-delay: -2.6s;
+}
+
+.campaign-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  min-height: 36px;
+}
+
+.campaign-meta .illustration-note {
+  margin-left: auto;
+}
+
+@keyframes campaign-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(var(--float-x), var(--float-y), 0) rotate(var(--float-angle));
+  }
+}
+
+@media (max-width: 767px) {
+  .campaign-slot:nth-child(n) {
+    --float-x: 0px;
+    --float-y: -4px;
+    --float-angle: 0deg;
+  }
+
+  .campaign-meta .illustration-note {
+    margin-left: 0;
+  }
+}
+
+@keyframes campaign-search-light {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  42%,
+  100% {
+    transform: translateX(330%);
+    opacity: 0;
+  }
+}
+
+@keyframes campaign-product {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.028) rotate(-0.4deg);
+  }
+}
+
+@keyframes campaign-poster {
+  0%,
+  100% {
+    transform: scale(1.015) translateX(-0.4%);
+  }
+  50% {
+    transform: scale(1.04) translateX(0.4%);
+  }
+}
+
+@keyframes campaign-halo {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.45;
+  }
+  58%,
+  99% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+/* Synchronized, illustrative search, offer, video and enquiry stories. */
+.campaign-scene {
+  --film-progress: 0;
+  --film-scale: 1.02;
+  --film-pan: -1%;
+  --film-title-opacity: 1;
+  --film-title-offset: 0px;
+  --conversion-strength: 0;
+}
+
+.campaign-scene .story-query-text {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.campaign-scene[data-campaign-story] .search-query::after {
+  content: none;
+}
+
+.campaign-scene[data-campaign-story][data-story-typing] .story-query-text::after {
+  content: '';
+  flex: 0 0 1px;
+  height: 1.1em;
+  margin-left: 2px;
+  background: var(--primary);
+  animation: campaign-caret 900ms steps(1, end) infinite;
+  animation-play-state: var(--campaign-play-state);
+}
+
+.campaign-scene .search-result {
+  min-height: 118px;
+}
+
+.campaign-scene .search-result h3 {
+  min-height: 3.3em;
+}
+
+.campaign-scene .shopping-card .ad-content h3,
+.campaign-scene .video-card .ad-content h3 {
+  min-height: 2.4em;
+}
+
+.campaign-scene .shopping-card .product-caption {
+  min-height: 2.6em;
+}
+
+.campaign-scene .poster-frame {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.campaign-scene .poster-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(20deg, #1e082fe8, #1e082f40 46%, transparent 72%);
+}
+
+.campaign-scene .story-video-badge {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  z-index: 1;
+  padding: 3px 6px;
+  border: 1px solid #ffffff50;
+  border-radius: 4px;
+  background: #251136bb;
+  color: #fff;
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.campaign-scene .story-video-slogan {
+  position: absolute;
+  left: 14px;
+  bottom: 17px;
+  z-index: 1;
+  max-width: 65%;
+  color: #fff;
+  font-family: var(--display);
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-shadow: 0 2px 12px #18092480;
+}
+
+.campaign-scene .story-video-progress {
+  display: none;
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 3px;
+  background: #ffffff38;
+}
+
+.campaign-scene .story-video-progress i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transform-origin: left;
+  transform: scaleX(var(--film-progress));
+}
+
+.campaign-scene[data-campaign-story] .story-video-progress {
+  display: block;
+}
+
+.campaign-scene[data-campaign-story] .story-video-slogan {
+  opacity: var(--film-title-opacity);
+  transform: translateY(var(--film-title-offset));
+}
+
+.campaign-scene[data-campaign-story] .poster-frame .poster {
+  animation: none;
+  transform: translateX(var(--film-pan)) scale(var(--film-scale));
+}
+
+.campaign-scene[data-campaign-story] .play-symbol {
+  opacity: 0;
+}
+
+.campaign-scene[data-campaign-story] .play-symbol::before {
+  animation: none;
+}
+
+.campaign-scene[data-campaign-story] .enquiry-icon::before {
+  animation: none;
+  opacity: calc(var(--conversion-strength) * 0.5);
+  transform: scale(calc(0.9 + var(--conversion-strength) * 0.55));
+}
+
+.campaign-scene[data-campaign-story] .enquiry-icon > .icon {
+  scale: calc(1 + var(--conversion-strength) * 0.08);
+}
+
+@keyframes campaign-caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .campaign-scene .search-result {
+    min-height: 55px;
+  }
+
+  .campaign-scene .story-video-badge {
+    top: 5px;
+    left: 6px;
+    padding: 1px 3px;
+    font-size: 8px;
+  }
+
+  .campaign-scene .story-video-slogan {
+    left: 8px;
+    bottom: 10px;
+    max-width: 76%;
+    font-size: 12px;
+  }
+
+  .campaign-scene .story-video-progress {
+    height: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campaign-scene[data-campaign-motion] *,
+  .campaign-scene[data-campaign-motion] *::before,
+  .campaign-scene[data-campaign-motion] *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

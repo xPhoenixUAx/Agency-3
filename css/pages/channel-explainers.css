@@ -1,0 +1,754 @@
+/* Channels explain the work behind the ads; the hero remains the campaign showcase. */
+.page-index #channels .channel-explainer {
+  padding: 0;
+  background: none;
+  width: 100%;
+  max-width: 660px;
+}
+
+.channel-diagram {
+  --channel-play-state: paused;
+  --channel-progress: 0;
+  margin: 0;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(145deg, #faf8ff, var(--surface));
+  overflow: hidden;
+}
+
+.channel-diagram[data-running='true'] {
+  --channel-play-state: running;
+}
+
+.page-index #channels .channel-diagram h3 {
+  max-width: 450px;
+  margin: 0;
+  font-family: var(--display);
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.page-index #channels .diagram-kicker {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.diagram-stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 340px;
+  padding-block: 24px;
+}
+
+.diagram-stage strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.diagram-label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.diagram-tile {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--paper);
+}
+
+.channel-diagram .icon {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  color: var(--primary);
+}
+
+.channel-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.channel-steps li {
+  position: relative;
+  padding-top: 12px;
+  border-top: 2px solid var(--border);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.channel-steps li::before {
+  content: '';
+  position: absolute;
+  inset: -2px 0 auto;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.channel-diagram[data-motion] .channel-steps li::before {
+  transform: scaleX(0);
+}
+
+.channel-diagram[data-motion] .channel-steps li.is-current::before {
+  transform: scaleX(var(--channel-progress));
+}
+
+.channel-diagram-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* Search: query groups converge on a shared intent and a relevant message. */
+.query-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.query-stack > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 12px;
+}
+
+.query-stack .icon {
+  width: 16px;
+  height: 16px;
+  flex-basis: 16px;
+  color: #1a73e8;
+}
+
+.intent-bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diagram-connector {
+  width: 2px;
+  height: 18px;
+  background: var(--border);
+}
+
+.intent-bridge > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 11px;
+}
+
+.intent-bridge .icon {
+  color: var(--accent);
+}
+
+.intent-bridge strong {
+  margin-top: 4px;
+}
+
+.intent-answer,
+.asset-brief {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 100px;
+  gap: 18px;
+  align-items: center;
+  padding: 16px;
+}
+
+.intent-answer img,
+.asset-brief img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.page-index #channels .intent-answer p {
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* Performance Max: source materials become distinct placements. */
+.asset-brief {
+  grid-template-columns: 100px minmax(0, 1fr);
+}
+
+.asset-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.asset-tags span {
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: var(--surface);
+  font-size: 10px;
+}
+
+.format-branches {
+  display: flex;
+  justify-content: space-around;
+  height: 24px;
+}
+
+.format-branches i {
+  width: 2px;
+  background: var(--border);
+}
+
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.format-tile {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.format-tile strong {
+  font-size: 12px;
+}
+
+.format-tile .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.format-tile:nth-child(1) .icon {
+  color: #1a73e8;
+}
+.format-tile:nth-child(2) .icon {
+  color: #c8640a;
+}
+.format-tile:nth-child(3) .icon {
+  color: #e62117;
+}
+
+.format-tile img,
+.format-headline {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 64px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.format-headline {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.shared-goal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+/* Shopping: data and its storefront counterpart remain readable together. */
+.feed-to-store {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.product-feed,
+.feed-product {
+  padding: 16px;
+}
+
+.product-feed dl {
+  margin: 0;
+}
+
+.product-feed dl > div {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.product-feed dl > div:last-child {
+  border: 0;
+}
+.product-feed dt {
+  font-size: 10px;
+  color: var(--muted);
+}
+.product-feed dd {
+  margin: 3px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.feed-product img {
+  width: 100%;
+  height: 143px;
+  object-fit: contain;
+  background: var(--surface);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.feed-product strong {
+  font-size: 14px;
+}
+.feed-product b {
+  display: block;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.feed-checks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 22px;
+}
+
+.feed-checks > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+
+.feed-checks .icon {
+  width: 17px;
+  height: 17px;
+  flex-basis: 17px;
+  color: #188038;
+}
+
+/* YouTube: a storyboard, rather than a second simulated player. */
+.storyboard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.storyboard-frame {
+  min-width: 0;
+}
+.storyboard-frame strong {
+  font-size: 14px;
+}
+.storyboard-image {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  background: var(--ink);
+}
+
+.storyboard-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 20%, #231035dd);
+}
+
+.storyboard-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.storyboard-frame:first-child img {
+  object-position: 38% center;
+}
+.storyboard-frame:last-child img {
+  object-position: 70% center;
+}
+.storyboard-image b {
+  position: absolute;
+  inset: auto 12px 14px;
+  z-index: 1;
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  color: #fff;
+}
+
+.editing-track {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 25px;
+  margin-top: 22px;
+}
+
+.editing-track i {
+  flex: 1;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--primary);
+  opacity: 0.35;
+}
+.editing-track i:nth-child(3n) {
+  height: 20px;
+}
+.editing-track i:nth-child(3n + 1) {
+  height: 12px;
+}
+.page-index #channels .storyboard-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+}
+
+/* App: the phone and the event it represents respond to the same beat. */
+.app-journey {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.journey-phone {
+  padding: 14px;
+  border: 5px solid var(--ink);
+  border-radius: 26px;
+  background: var(--paper);
+}
+.phone-speaker {
+  display: block;
+  width: 40px;
+  height: 5px;
+  border-radius: 10px;
+  background: var(--ink);
+  margin: 0 auto 18px;
+}
+.app-discovery {
+  padding: 14px 10px;
+  border-radius: 12px;
+  background: var(--surface);
+}
+.app-discovery > .icon {
+  margin-bottom: 14px;
+  color: var(--primary);
+}
+.app-discovery strong {
+  font-size: 17px;
+  letter-spacing: -0.04em;
+}
+.app-discovery .diagram-label {
+  font-size: 10px;
+}
+.app-install {
+  padding-block: 14px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.install-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+}
+.install-indicator .icon {
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  flex-basis: 18px;
+}
+.app-first-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+}
+.app-first-action .icon {
+  color: #188038;
+}
+.app-first-action strong {
+  font-size: 11px;
+  margin-top: 2px;
+}
+.app-events {
+  display: grid;
+  gap: 22px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.app-events li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.page-index #channels .app-events p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Small, sequenced emphasis: settle, hold, then pass attention to the next stage. */
+.channel-diagram[data-motion] .diagram-stage [data-channel-beat].is-current {
+  animation: channel-settle 4s ease-out both;
+  animation-play-state: var(--channel-play-state);
+}
+.channel-diagram[data-motion] .diagram-tile.is-current {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+.channel-diagram[data-motion] .query-stack.is-current > span,
+.channel-diagram[data-motion] .format-grid.is-current > div,
+.channel-diagram[data-motion] .feed-checks.is-current > span {
+  animation: channel-arrive 4s ease-out both;
+  animation-play-state: var(--channel-play-state);
+}
+.channel-diagram[data-motion] .is-current > :nth-child(2) {
+  animation-delay: 100ms;
+}
+.channel-diagram[data-motion] .is-current > :nth-child(3) {
+  animation-delay: 200ms;
+}
+.channel-diagram[data-motion] .storyboard-frame.is-current img {
+  animation: channel-frame 4s ease-out both;
+  animation-play-state: var(--channel-play-state);
+}
+.channel-diagram[data-motion] .app-events .is-current strong {
+  color: var(--primary);
+}
+
+@keyframes channel-settle {
+  0% {
+    transform: translateY(5px);
+  }
+  18%,
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes channel-arrive {
+  0% {
+    transform: translateY(7px) scale(0.97);
+  }
+  22%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes channel-frame {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.09);
+  }
+}
+
+@media (max-width: 1199px) {
+  .page-index #channels .channel-explainer {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .channel-diagram {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .page-index #channels .channel-diagram h3 {
+    font-size: 25px;
+  }
+  .page-index #channels .diagram-kicker {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+  }
+  .diagram-stage {
+    min-height: 340px;
+    padding-block: 22px;
+  }
+  .channel-steps {
+    gap: 10px;
+  }
+  .channel-steps li {
+    font-size: 11px;
+  }
+  .intent-answer {
+    grid-template-columns: minmax(0, 1fr) 76px;
+    gap: 12px;
+    padding: 12px;
+  }
+  .intent-answer img {
+    height: 90px;
+  }
+  .intent-answer strong {
+    font-size: 15px;
+  }
+  .query-stack {
+    gap: 6px;
+  }
+  .query-stack > span {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .asset-brief {
+    grid-template-columns: 75px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+  .asset-brief img {
+    height: 94px;
+  }
+  .asset-brief strong {
+    font-size: 15px;
+  }
+  .asset-tags {
+    gap: 4px;
+  }
+  .asset-tags span {
+    padding: 3px 5px;
+  }
+  .format-grid {
+    gap: 7px;
+  }
+  .format-tile {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 6px;
+    padding: 8px;
+  }
+  .format-tile img,
+  .format-headline {
+    height: 62px;
+  }
+  .format-headline {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .format-tile strong {
+    font-size: 11px;
+  }
+  .feed-to-store {
+    gap: 10px;
+  }
+  .product-feed,
+  .feed-product {
+    padding: 11px;
+  }
+  .product-feed dd {
+    font-size: 12px;
+  }
+  .feed-product img {
+    height: 130px;
+  }
+  .feed-product strong {
+    font-size: 13px;
+  }
+  .feed-checks {
+    gap: 8px;
+  }
+  .feed-checks > span {
+    font-size: 10px;
+  }
+  .storyboard {
+    gap: 8px;
+  }
+  .storyboard-image {
+    height: 180px;
+    border-radius: 8px;
+  }
+  .storyboard-image b {
+    inset: auto 8px 12px;
+    font-size: 18px;
+  }
+  .storyboard-frame strong {
+    font-size: 12px;
+  }
+  .storyboard-frame .diagram-label {
+    font-size: 10px;
+  }
+  .app-journey {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 14px;
+  }
+  .journey-phone {
+    padding: 10px;
+    border-width: 4px;
+    border-radius: 22px;
+  }
+  .app-discovery {
+    padding: 12px 8px;
+  }
+  .app-discovery strong {
+    font-size: 15px;
+  }
+  .app-events {
+    gap: 24px;
+  }
+  .app-events li {
+    gap: 7px;
+  }
+  .app-events strong {
+    font-size: 14px;
+  }
+  .page-index #channels .app-events p {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .channel-diagram *,
+  .channel-diagram *::before {
+    animation: none !important;
+  }
+}

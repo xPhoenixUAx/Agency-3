@@ -1,0 +1,58 @@
+{
+  "scenarios": [
+    {
+      "id": "trainers",
+      "query": "sustainable trainers",
+      "compactQuery": "trainers",
+      "domain": "Everyday motion",
+      "searchTitle": "Sustainable Trainers for a Brighter Tomorrow",
+      "searchDescription": "Lightweight comfort. Find your everyday pair.",
+      "productName": "Everyday Motion Trainers",
+      "productCaption": "Lightweight. Sustainable. Built for more.",
+      "price": "£85.00",
+      "image": "assets/campaign-sneaker.webp",
+      "imageAlt": "Illustrative ivory knit trainer with an orange heel",
+      "poster": "assets/campaign-film-sneaker.webp",
+      "posterAlt": "Illustrative trainer campaign in an orange and violet studio",
+      "slogan": "Make your next move.",
+      "videoTitle": "Your everyday. In motion.",
+      "sitelinks": ["Shop Trainers", "Our Story", "Materials"]
+    },
+    {
+      "id": "headphones",
+      "query": "wireless headphones",
+      "compactQuery": "headphones",
+      "domain": "Everyday sound",
+      "searchTitle": "Wireless Headphones for Your Everyday",
+      "searchDescription": "Find your focus. Bring your music closer.",
+      "productName": "Cloud Wireless Headphones",
+      "productCaption": "Soft cushions. Your sound. Your space.",
+      "price": "£129.00",
+      "image": "assets/campaign-headphones.webp",
+      "imageAlt": "Illustrative ivory wireless headphones with orange ear cup accents",
+      "poster": "assets/campaign-film-headphones.webp",
+      "posterAlt": "Illustrative headphones campaign in an orange and violet studio",
+      "slogan": "Find your own frequency.",
+      "videoTitle": "A little more you. A little less noise.",
+      "sitelinks": ["Shop Audio", "Our Story", "Explore Colours"]
+    },
+    {
+      "id": "backpack",
+      "query": "everyday backpack",
+      "compactQuery": "backpack",
+      "domain": "Everyday adventures",
+      "searchTitle": "Your Everyday Backpack. Ready for More.",
+      "searchDescription": "From your morning commute to your next escape.",
+      "productName": "Everyday Carry Backpack",
+      "productCaption": "Room for the essentials. Ready to go.",
+      "price": "£69.00",
+      "image": "assets/campaign-backpack.webp",
+      "imageAlt": "Illustrative ivory backpack with orange handles and violet straps",
+      "poster": "assets/campaign-film-backpack.webp",
+      "posterAlt": "Illustrative backpack campaign in an orange and violet studio",
+      "slogan": "Take your day further.",
+      "videoTitle": "Pack a little more possibility.",
+      "sitelinks": ["Shop Bags", "Our Story", "Everyday Details"]
+    }
+  ]
+}
