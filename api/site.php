@@ -20,6 +20,15 @@ function site_config(): array
     }
     $url = parse_url($config['website']);
     if (
+        array_key_exists('mailFrom', $config) &&
+        (!is_string($config['mailFrom']) ||
+            ($config['mailFrom'] !== '' &&
+                (!filter_var($config['mailFrom'], FILTER_VALIDATE_EMAIL) ||
+                    preg_match('/[\r\n\x00]/', $config['mailFrom']))))
+    ) {
+        throw new RuntimeException('Invalid sender email in site.json.');
+    }
+    if (
         !filter_var($config['email'], FILTER_VALIDATE_EMAIL) ||
         preg_match('/[\r\n\x00]/', $config['email'] . $config['name']) ||
         strlen($config['name']) > 200 ||

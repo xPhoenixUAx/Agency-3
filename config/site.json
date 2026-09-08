@@ -2,6 +2,7 @@
   "name": "PIVOT",
   "legalName": "Your registered company name",
   "email": "hello@example.com",
+  "mailFrom": "",
   "address": "Your business address",
   "website": "https://example.com",
   "description": "Independent Google Ads performance agency",

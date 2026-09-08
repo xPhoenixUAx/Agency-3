@@ -1,4 +1,4 @@
-﻿// Public brand details only. Mail transport settings belong in api/server.php.
+// Brand, contacts and sender come from site.json; mail transport stays on the host.
 const configURL = new URL('../config/site.json', import.meta.url);
 const formURL = new URL('../config/form.json', import.meta.url);
 const siteURL = new URL('../', import.meta.url);
@@ -20,6 +20,12 @@ export function validateConfig(brand) {
       throw new Error(`Missing ${key} in site.json.`);
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(brand.email)) throw new Error('Invalid contact email.');
+  if (
+    brand.mailFrom !== undefined &&
+    (typeof brand.mailFrom !== 'string' ||
+      (brand.mailFrom !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(brand.mailFrom)))
+  )
+    throw new Error('Invalid mailFrom in site.json.');
   const website = new URL(brand.website);
   if (
     !['https:', 'http:'].includes(website.protocol) ||

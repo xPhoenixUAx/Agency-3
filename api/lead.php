@@ -164,12 +164,10 @@ if ($errors) {
         'errors' => $errors,
     ]);
 }
-$serverFile = is_file(__DIR__ . '/server.php')
-    ? __DIR__ . '/server.php'
-    : __DIR__ . '/server.example.php';
-$server = require $serverFile;
 $to = $config['email'] ?? '';
-$from = $server['from'] ?? '';
+$from = $config['mailFrom'] ?? '';
+// One contact address is sufficient; override only if the host requires another sender.
+if ($from === '') $from = $to;
 foreach ([$to, $from] as $mailbox) {
     if (
         !is_string($mailbox) ||
